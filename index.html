@@ -7,11 +7,21 @@
     <meta name="author" content=" Vasudev PS ">
     <title>Vasudev PS: Portfolio</title>
 
-    <!-- Hmm, what is the impact of web fonts on speed? Measure it... -->
-    <link href="//fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+    <!-- Hmm, what is the impact of web fonts on speed? Measure it...
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">-->
 
     <link href="css/style.css" rel="stylesheet">
     <style>
+        @font-face {
+        font-family: OpenSans;
+        src: url(href="//fonts.googleapis.com/css?family=Open+Sans:400");
+        font-weight: normal;
+      }
+      @font-face {
+        font-family: OpenSans;
+        src: url(href="//fonts.googleapis.com/css?family=Open+Sans:700");
+        font-weight: bold;
+      }
         body, button, input, select, textarea { font-family: 'Open Sans', sans-serif; color: #333; }
         @media only screen and (max-width: 480px) {
         body { font-size: 12px;}
