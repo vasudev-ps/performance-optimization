@@ -41,10 +41,12 @@ To optimize views/pizza.html, modified views/js/main.js so that frames per secon
   
   so modified these function with.
   
-    ```var allPizzas = document.getElementsByClassName("randomPizzaContainer");
+    ```javascript
+    var allPizzas = document.getElementsByClassName("randomPizzaContainer");
       for (i = 0; i < allPizzas.length; i++){
       allPizzas[i].style.width = newwidth + "%";
-      }```
+      }
+     ```
       
    which solved the Problem.
    
@@ -58,11 +60,13 @@ To optimize views/pizza.html, modified views/js/main.js so that frames per secon
    
    Replaced by creating a variable for `document.body.scrollTop / 1250` outside for loop and hence calculating only once.
    
-      ```var items = document.querySelectorAll(".mover");
+      ```javascript
+       var items = document.querySelectorAll(".mover");
        var a = document.body.scrollTop / 1250;
         for ( i = 0; i < items.length; i++){
         phase = Math.sin(a + i % 5),items[i].style.left = items[i].basicLeft + 100 * phase + "px";
-        }```
+        }
+       ```
 
  To experience the web page [Click Here](https://vasudev-ps.github.io/performance-optimization/views/pizza.html).
  
