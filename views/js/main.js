@@ -416,6 +416,8 @@ var resizePizzas = function(size) {
         console.log("bug in changeSliderLabel");
     }
   }
+  //original code had to do lots of offset calculation and change layout forcefully
+  //eliminated the offset calculation part
   function changePizzaSizes(size) {
       switch (size) {
           case "1":
@@ -433,7 +435,8 @@ var resizePizzas = function(size) {
       // Iterates through pizza elements on the page and changes their widths
       var allPizzas = document.getElementsByClassName("randomPizzaContainer");
       for (i = 0; i < allPizzas.length; i++)
-          allPizzas[i].style.width = newwidth + "%";
+          allPizzas[i].style.width = newwidth + "%";//no need to calclulate offset and
+        //get into jank just get the new width and allocate.
   }
   window.performance.mark("mark_start_resize");   // User Timing API function
   changeSliderLabel(size);
@@ -447,8 +450,8 @@ var resizePizzas = function(size) {
 window.performance.mark("mark_start_generating"); // collect timing data
 
 // This for-loop actually creates and appends all of the pizzas when the page loads
+var pizzasDiv = document.getElementById("randomPizzas");
 for (var i = 2; i < 100; i++) {
-  var pizzasDiv = document.getElementById("randomPizzas");
   pizzasDiv.appendChild(pizzaElementGenerator(i));
 }
 
@@ -503,7 +506,21 @@ window.addEventListener('scroll', updatePositions);
 document.addEventListener('DOMContentLoaded', function() {
   var cols = 8;
   var s = 256;
-  for (var i = 0; i < 200; i++) {
+  var pizzaCount;
+  var intViewportHeight = window.innerHeight;
+  //dynamically calculate the number of pizzas needed according
+  //to screen height of device
+  if(intViewportHeight < 900){
+      pizzaCount = 25;
+  }
+  else if(intViewportHeight < 1200){
+      pizzaCount = 35;
+  }
+  else{
+      pizzaCount = 50;
+  }
+  console.log(pizzaCount);
+  for (var i = 0; i < pizzaCount; i++) {
     var elem = document.createElement('img');
     elem.className = 'mover';
     elem.src = "images/pizza.png";
